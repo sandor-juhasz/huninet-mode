@@ -21,7 +21,16 @@
 			  ("ő" . "o\"")
 			  ("ú" . "u'")
 			  ("ü" . "u:")
-			  ("ű" . "u\""))  
+			  ("ű" . "u\"")
+			  ("Á" . "A'")
+			  ("É" . "E'")
+			  ("Í" . "I'")
+			  ("Ó" . "O'")
+			  ("Ö" . "O:")
+			  ("Ő" . "O\"")
+			  ("Ú" . "U'")
+			  ("Ü" . "U:")
+			  ("Ű" . "U\""))  
   "The mapping to convert Hungarian characters to their pairs based on the
 Huninet recommendation.")
 
@@ -33,13 +42,18 @@ character is not mapped, it returns the character as is."
 	(cdr conversion-pair)
       char)))
 
+(defun huninet-mode-convert-region (start end)
+  "Hello, World!")
+
+;;
+;; Unit tests
+;;
+
 (ert-deftest huninet-convert-char-test ()
   "Tests if a character is properly converted to its huninet counterpart."
   (should (equal (huninet-convert-char "á") "a'"))
+  (should (equal (huninet-convert-char "Ü") "U:"))
   (should (equal (huninet-convert-char "b") "b")))
-
-(defun huninet-mode-convert-region (start end)
-  "Hello, World!")
 
 (ert-deftest huninet-mode-convert-region-test ()
   "Tests if the conversion is done properly."
