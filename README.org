@@ -1,0 +1,6 @@
+#+title: Huninet mode for Emacs
+
+This minor mode is used to convert a text buffer containing Hungarian
+text to the 7-bit "dead key" notation using the Huninet
+recommendation. The recommendation can be found here:
+http://deneb.iszt.hu/~pasztor/ekezet.html
