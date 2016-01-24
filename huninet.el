@@ -14,7 +14,14 @@
 ;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 (defvar huninet-mapping '(("á" . "a'")
-			  ("é" . "e'"))
+			  ("é" . "e'")
+			  ("í" . "i'")
+			  ("ó" . "o'")
+			  ("ö" . "o:")
+			  ("ő" . "o\"")
+			  ("ú" . "u'")
+			  ("ü" . "u:")
+			  ("ű" . "u\""))  
   "The mapping to convert Hungarian characters to their pairs based on the
 Huninet recommendation.")
 
