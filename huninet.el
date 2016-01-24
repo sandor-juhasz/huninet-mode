@@ -13,6 +13,23 @@
 ;; You should have received a copy of the GNU General Public License
 ;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+(defvar huninet-mapping '(("á" . "a'")
+			  ("é" . "e'"))
+  "The mapping to convert Hungarian characters to their pairs based on the
+Huninet recommendation.")
+
+(defun huninet-convert-char (char)
+  "Converts the character passed as parameter to a huninet string. If the
+character is not mapped, it returns the character as is."
+  (let ((conversion-pair (assoc char huninet-mapping)))
+    (if conversion-pair
+	(cdr conversion-pair)
+      char)))
+
+(ert-deftest huninet-convert-char-test ()
+  "Tests if a character is properly converted to its huninet counterpart."
+  (should (equal (huninet-convert-char "á") "a'"))
+  (should (equal (huninet-convert-char "b") "b")))
 
 (defun huninet-mode-convert-region (start end)
   "Hello, World!")
