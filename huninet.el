@@ -14,3 +14,9 @@
 ;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
+(defun huninet-mode-convert-region (start end)
+  "Hello, World!")
+
+(ert-deftest huninet-mode-convert-region-test ()
+  "Tests if the conversion is done properly."
+  (should (equal (huninet-mode-convert-region 10 20) "Hello, World!")))
