@@ -1,6 +1,12 @@
-;; Huninet minor mode (C) 2016 Juhász Sándor <sandor.juhasz.1983@gmail.com>
+;;; huninet.el --- Minor mode to enter text in the 7-bit huninet format.
 
-;; This program is free software: you can redistribute it and/or modify
+;; Copyright (C) 2016 Sandor Juhasz
+
+;; Author: Sandor Juhasz <sandor.juhasz.1983@gmail.com>
+;; URL: https://github.com/sandor-juhasz
+;; Version: 0.1
+
+;; This program is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
 ;; the Free Software Foundation, either version 3 of the License, or
 ;; (at your option) any later version.
@@ -12,6 +18,14 @@
 
 ;; You should have received a copy of the GNU General Public License
 ;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+;;; Commentary:
+;;
+;; Minor mode to enter Hungarian text using the 7-bit ASCII character set.
+;; This encoding was recommended by the Huninet in the early days of the
+;; interet back in the '90s.
+;;
+;;; Code:
 
 (defvar huninet-mapping '(("á" . "a'")
 			  ("é" . "e'")
@@ -84,3 +98,6 @@ character is not mapped, it returns the character as is."
   (should (equal (huninet-convert-char "Ü") "U:"))
   (should (equal (huninet-convert-char "b") "b")))
 
+(provide 'huninet)
+
+;;; huninet.el ends here
