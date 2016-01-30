@@ -24,3 +24,14 @@
   (should (equal (huninet-convert-char "b") "b")))
 
 
+(ert-deftest huninet-mode-test ()
+  "Tests if the transformer function is registered when the minor
+mode is enable.d"
+  (with-temp-buffer
+     (let ((is-mode-enabled (lambda () (member 'huninet-transform-as-you-type post-command-hook))))
+       (should-not (funcall is-mode-enabled))
+       (huninet-mode 1)
+       (should (funcall is-mode-enabled))
+       (huninet-mode 0)
+       (should-not (funcall is-mode-enabled)))))
+
