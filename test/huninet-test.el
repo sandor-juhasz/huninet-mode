@@ -35,3 +35,14 @@ mode is enable.d"
        (huninet-mode 0)
        (should-not (funcall is-mode-enabled)))))
 
+
+(ert-deftest huninet-mode-convert-char-before-point-test ()
+  "Tests that the currently typed in character gets converted."
+  (with-temp-buffer
+    (insert "á")
+    (huninet-mode-convert-char-before-point)
+    (should (equal (buffer-string) "a'")))
+  (with-temp-buffer
+    (insert "a")
+    (huninet-mode-convert-char-before-point)
+    (should (equal (buffer-string) "a"))))

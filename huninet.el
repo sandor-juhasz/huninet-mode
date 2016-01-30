@@ -77,6 +77,16 @@ character is not mapped, it returns the character as is."
 	(cdr conversion-pair)
       char)))
 
+(defun huninet-mode-convert-char-before-point ()
+  "Converts the char before the point to a huninet string."
+  (let ((ch (buffer-substring-no-properties (1- (point)) (point))))
+    (if ch
+	(progn (backward-char)
+	       (delete-char 1)
+	       (insert (huninet-convert-char ch))))))
+
+
+
 (defun huninet-mode-convert-region (start end)
   "Converts the selected region to a huninet string."
   (interactive "*r")
