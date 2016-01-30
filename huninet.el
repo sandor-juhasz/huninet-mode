@@ -27,27 +27,6 @@
 ;;
 ;;; Code:
 
-(define-minor-mode huninet-mode
-  "Converts characters to 7-bit notation as you type."
-  :lighter "hun"
-  (if huninet-mode
-      (huninet-enable-mode)
-    (huninet-disable-mode)))
-
-(defun huninet-enable-mode ()
-  "Enables the huninet mode."
-  (add-hook 'post-command-hook 'huninet-transform-as-you-type nil t))
-
-(defun huninet-disable-mode ()
-  "Disables the huninet mode."
-  (remove-hook 'post-command-hook 'huninet-transform-as-you-type t))
-
-(defun huninet-transform-as-you-type ()
-  "This function is called from the post-command-hook. It tests
-  if a transformation is necessary and it executes the
-  transformation."
-  (message "%s" this-command))
-
 (defvar huninet-mapping '(("á" . "a'")
 			  ("é" . "e'")
 			  ("í" . "i'")
@@ -103,6 +82,32 @@ character is not mapped, it returns the character as is."
 	  (delete-char 1)
 	  (insert newchar)
 	  (setq i (1+ i)))))))
+
+;;
+;; Minor mode functions
+;;
+
+(define-minor-mode huninet-mode
+  "Converts characters to 7-bit notation as you type."
+  :lighter "hun"
+  (if huninet-mode
+      (huninet-enable-mode)
+    (huninet-disable-mode)))
+
+(defun huninet-enable-mode ()
+  "Enables the huninet mode."
+  (add-hook 'post-command-hook 'huninet-transform-as-you-type nil t))
+
+(defun huninet-disable-mode ()
+  "Disables the huninet mode."
+  (remove-hook 'post-command-hook 'huninet-transform-as-you-type t))
+
+(defun huninet-transform-as-you-type ()
+  "This function is called from the post-command-hook. It tests
+  if a transformation is necessary and it executes the
+  transformation."
+  (if (equal "self-insert-command" (symbol-name this-command))
+      (huninet-mode-convert-char-before-point)))
 
 (provide 'huninet)
 
