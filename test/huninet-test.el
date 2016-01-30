@@ -23,3 +23,4 @@
   (should (equal (huninet-convert-char "Ü") "U:"))
   (should (equal (huninet-convert-char "b") "b")))
 
+
