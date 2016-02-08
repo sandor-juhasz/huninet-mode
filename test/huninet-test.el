@@ -2,6 +2,11 @@
 ;;; Test cases for the huninet mode.
 ;;;
 
+(when (require 'undercover nil t)
+  (undercover "huninet.el"))
+
+(require 'huninet)
+
 (ert-deftest huninet-convert-region-test ()
   "Tests if a region is poperly converted."
   (let ((test-cases '(("a" . "a")
