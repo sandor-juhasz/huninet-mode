@@ -7,10 +7,8 @@
 Copyright © 2016 Sándor Juhász
 
 This minor mode is used to convert a text buffer containing Hungarian
-text to the 7-bit "dead key" notation using the Huninet
-recommendation. The recommendation can be found here:
+text to the 7-bit "dead key" ("repülőékezetes") notation using the
+Huninet recommendation. The recommendation can be found here:
 http://deneb.iszt.hu/~pasztor/ekezet.html
-
-A simple hello world library to test Travis CI features.
 
 Distributed under the GNU GPL version 3 or later.
