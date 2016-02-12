@@ -11,4 +11,14 @@ text to the 7-bit "dead key" ("repülőékezetes") notation using the
 Huninet recommendation. The recommendation can be found here:
 http://deneb.iszt.hu/~pasztor/ekezet.html
 
+## Vagrant environment
+
+The attached Vagrantfile can be used to spawn a virtual machine with
+all the necessary tools to compile, test and run the minor mode. The
+box installs the following packages:
+- evm
+- emacs 24.5 from source code
+- cask
+- GNU automake, autoconf and other standard dev tools
+
 Distributed under the GNU GPL version 3 or later.
